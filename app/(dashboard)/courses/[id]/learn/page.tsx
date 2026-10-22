@@ -19,8 +19,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Card, CardContent } from "@/components/ui/card"
+import { VideoPlayer } from "@/components/courses/video-player"
 import { api } from "@/lib/api-client"
 import { toast } from "sonner"
+import confetti from "canvas-confetti"
 import { Course, LessonData, ModuleData } from "@/lib/types"
 
 function LearnCourseContent() {
@@ -100,8 +102,10 @@ function LearnCourseContent() {
       )
 
       if (res.isFullyCompleted) {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } })
         toast.success("Course 100% Completed! Outstanding achievement! 🏆")
       } else if (res.completed) {
+        confetti({ particleCount: 40, spread: 50, origin: { y: 0.7 } })
         toast.success("Lesson marked as complete! Keep going!")
       } else {
         toast.info("Lesson marked as incomplete.")
@@ -184,18 +188,16 @@ function LearnCourseContent() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Lesson View Area */}
         <div className="lg:col-span-8 space-y-6">
-          {/* Video / Interactive Player Card */}
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-black aspect-video flex flex-col items-center justify-center text-white shadow-xl">
-            <div className="text-center space-y-3 p-6 max-w-md">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/90 text-primary-foreground shadow-lg hover:scale-110 transition-transform cursor-pointer">
-                <Play className="h-8 w-8 fill-current ml-1" />
-              </div>
-              <h2 className="text-lg font-bold">{activeLesson.title}</h2>
-              <p className="text-xs text-white/70">
-                Interactive video lecture & code walkthrough ({activeLesson.duration})
-              </p>
-            </div>
-          </div>
+          {/* Interactive Fully Functional Video Player */}
+          <VideoPlayer
+            videoUrl={activeLesson.videoUrl}
+            title={activeLesson.title}
+            duration={activeLesson.duration}
+            courseCategory={course.category}
+            onComplete={handleToggleComplete}
+            onNextLesson={() => nextLesson && setActiveLesson(nextLesson)}
+            hasNextLesson={!!nextLesson}
+          />
 
           {/* Action Row */}
           <div className="flex items-center justify-between p-4 rounded-xl border border-border bg-card shadow-xs">

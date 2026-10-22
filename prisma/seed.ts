@@ -69,7 +69,7 @@ export async function runSeed() {
 
   console.log(`Users seeded: Student (${student.email}), Admin (${admin.email})`)
 
-  // 3. Courses Data
+    // 3. Courses Data with Working Video URLs & Complete Modules
   const coursesData = [
     {
       id: "dsa-java",
@@ -97,6 +97,7 @@ export async function runSeed() {
               title: "Array Fundamentals & Memory Layout",
               duration: "25 min",
               order: 1,
+              videoUrl: "https://www.youtube.com/embed/8hly31xKli0",
               content: `# Array Fundamentals & Memory Layout
 
 Arrays are contiguous blocks of memory where each element can be accessed in O(1) time using its index.
@@ -119,6 +120,7 @@ System.out.println("Element at index 2: " + numbers[2]); // O(1)
               title: "Two-Pointer Technique & Sliding Window",
               duration: "35 min",
               order: 2,
+              videoUrl: "https://www.youtube.com/embed/BWL3W6bX_6U",
               content: `# Two-Pointer Technique & Sliding Window
 
 The two-pointer technique solves array subarray and pair problems efficiently, reducing O(n^2) brute force to O(n) linear scans.
@@ -134,8 +136,7 @@ public boolean hasPairWithSum(int[] arr, int target) {
     }
     return false;
 }
-\`\`\`
-`,
+\`\`\``,
             },
           ],
         },
@@ -148,6 +149,7 @@ public boolean hasPairWithSum(int[] arr, int target) {
               title: "Singly Linked Lists & Pointer Manipulation",
               duration: "30 min",
               order: 3,
+              videoUrl: "https://www.youtube.com/embed/F8AbOfQwl1c",
               content: `# Singly Linked Lists
 
 Unlike arrays, linked lists store elements as disconnected nodes that point to the next node.
@@ -158,9 +160,7 @@ class ListNode {
     ListNode next;
     ListNode(int val) { this.val = val; }
 }
-\`\`\`
-
-Insertion and deletion at the head is O(1), making it ideal for stacks and queues.`,
+\`\`\``,
             },
           ],
         },
@@ -173,6 +173,7 @@ Insertion and deletion at the head is O(1), making it ideal for stacks and queue
               title: "LIFO vs FIFO Implementations",
               duration: "25 min",
               order: 4,
+              videoUrl: "https://www.youtube.com/embed/wjI1WNcIntg",
               content: `# Stacks (LIFO) and Queues (FIFO)
 
 - **Stack**: Last-In-First-Out. Used in recursion, expression evaluation, and browser back history.
@@ -189,6 +190,7 @@ Insertion and deletion at the head is O(1), making it ideal for stacks and queue
               title: "BST Traversals: Pre, In, and Post Order",
               duration: "40 min",
               order: 5,
+              videoUrl: "https://www.youtube.com/embed/fAAZixBzIAI",
               content: `# Binary Search Trees (BST)
 
 In a valid BST, every left child is smaller than its parent, and every right child is greater.
@@ -206,6 +208,7 @@ An in-order traversal of a BST visits nodes in strictly ascending sorted order!`
               title: "Breadth-First Search (BFS) and Dijkstra",
               duration: "45 min",
               order: 6,
+              videoUrl: "https://www.youtube.com/embed/tWVWeAqZ0WU",
               content: `# Graph Traversals: BFS & Dijkstra
 
 BFS uses a Queue to find the shortest unweighted path layer by layer.
@@ -241,6 +244,7 @@ Dijkstra's algorithm uses a PriorityQueue (min-heap) to find the shortest path i
               title: "HashMap Internals: Buckets & Treeification",
               duration: "30 min",
               order: 1,
+              videoUrl: "https://www.youtube.com/embed/c3RVW3KGIIE",
               content: `# HashMap Under The Hood
 
 Java 8 converts linked list buckets in HashMaps into Red-Black Trees when bucket length exceeds 8, improving worst-case search from O(n) to O(log n).`,
@@ -249,9 +253,35 @@ Java 8 converts linked list buckets in HashMaps into Red-Black Trees when bucket
               title: "ConcurrentHashMap vs SynchronizedMap",
               duration: "35 min",
               order: 2,
+              videoUrl: "https://www.youtube.com/embed/viTHc_4XfCA",
               content: `# Thread-Safe Maps
 
 ConcurrentHashMap uses segment/bucket-level locking and CAS (Compare-And-Swap) instructions for lock-free read concurrency.`,
+            },
+          ],
+        },
+        {
+          title: "Module 2: Lists, Sets & Generics",
+          duration: "2h 30m",
+          order: 2,
+          lessons: [
+            {
+              title: "ArrayList vs LinkedList Performance Benchmark",
+              duration: "28 min",
+              order: 3,
+              videoUrl: "https://www.youtube.com/embed/5dscMs22upM",
+              content: `# ArrayList vs LinkedList
+
+Modern hardware heavily favors ArrayList due to contiguous memory allocation and CPU cache spatial locality.`,
+            },
+            {
+              title: "Generics, Wildcards, and Type Erasure",
+              duration: "32 min",
+              order: 4,
+              videoUrl: "https://www.youtube.com/embed/K1iu1kXkVoA",
+              content: `# Java Generics & Type Erasure
+
+Java compiler removes generic type parameters during compilation (Type Erasure) for backwards compatibility.`,
             },
           ],
         },
@@ -280,12 +310,47 @@ ConcurrentHashMap uses segment/bucket-level locking and CAS (Compare-And-Swap) i
           order: 1,
           lessons: [
             {
+              title: "Component Architecture & JSX",
+              duration: "35 min",
+              order: 1,
+              videoUrl: "https://www.youtube.com/embed/bMknfKXIFA8",
+              content: `# React 19 Architecture
+
+React turns declarative JSX into fiber node trees and efficiently reconciles UI changes via Virtual DOM diffing.`,
+            },
+            {
               title: "State Management with useState and useReducer",
               duration: "40 min",
-              order: 1,
+              order: 2,
+              videoUrl: "https://www.youtube.com/embed/TNhaISAUyvc",
               content: `# React State Architecture
 
 Learn how state triggers re-renders and how to organize clean UI component trees with pure functions.`,
+            },
+          ],
+        },
+        {
+          title: "Module 2: Modern Full-Stack React",
+          duration: "3h 45m",
+          order: 2,
+          lessons: [
+            {
+              title: "Custom Hooks & Asynchronous Data Fetching",
+              duration: "35 min",
+              order: 3,
+              videoUrl: "https://www.youtube.com/embed/0ZJgIjIuY7U",
+              content: `# Custom React Hooks
+
+Extract reusable component logic into custom hooks starting with 'use' to share stateful operations cleanly.`,
+            },
+            {
+              title: "Next.js App Router, SSR & Server Actions",
+              duration: "45 min",
+              order: 4,
+              videoUrl: "https://www.youtube.com/embed/wm5gMKuwSYk",
+              content: `# Next.js App Router & Server Components
+
+React Server Components execute entirely on the server, streaming lightweight HTML with zero client JavaScript bundle overhead.`,
             },
           ],
         },
@@ -307,7 +372,59 @@ Learn how state triggers re-renders and how to organize clean UI component trees
       gradient: "from-fuchsia-500 to-pink-600",
       tags: JSON.stringify(["ML", "Python", "Models"]),
       published: true,
-      modules: [],
+      modules: [
+        {
+          title: "Module 1: Machine Learning Foundations",
+          duration: "3h",
+          order: 1,
+          lessons: [
+            {
+              title: "Supervised vs Unsupervised Learning",
+              duration: "35 min",
+              order: 1,
+              videoUrl: "https://www.youtube.com/embed/i_LwzRVP7bg",
+              content: `# ML Paradigms: Supervised vs Unsupervised
+
+- **Supervised Learning**: Models learn mapping from input features X to labeled targets Y.
+- **Unsupervised Learning**: Discovering latent structures and clusters without pre-existing labels.`,
+            },
+            {
+              title: "Linear Regression & Gradient Descent",
+              duration: "40 min",
+              order: 2,
+              videoUrl: "https://www.youtube.com/embed/PaFPbb66DxQ",
+              content: `# Linear Regression & Optimization
+
+Gradient Descent iteratively updates model weights by computing the partial derivatives of the Mean Squared Error (MSE) loss function.`,
+            },
+          ],
+        },
+        {
+          title: "Module 2: Deep Learning & Neural Networks",
+          duration: "3h 30m",
+          order: 2,
+          lessons: [
+            {
+              title: "Logistic Regression & Classification Boundaries",
+              duration: "38 min",
+              order: 3,
+              videoUrl: "https://www.youtube.com/embed/yIYKR4sgzI8",
+              content: `# Classification with Sigmoid Function
+
+The sigmoid function maps linear combinations of features into probability values bounded between 0 and 1.`,
+            },
+            {
+              title: "Neural Networks Architecture & Backpropagation",
+              duration: "45 min",
+              order: 4,
+              videoUrl: "https://www.youtube.com/embed/aircAruvnKk",
+              content: `# Neural Networks & Backpropagation
+
+Backpropagation applies the calculus chain rule backwards from output loss to compute weight gradients across multiple hidden layers.`,
+            },
+          ],
+        },
+      ],
     },
     {
       id: "spring-boot",
@@ -325,7 +442,67 @@ Learn how state triggers re-renders and how to organize clean UI component trees
       gradient: "from-emerald-500 to-green-600",
       tags: JSON.stringify(["Spring", "Backend", "REST"]),
       published: true,
-      modules: [],
+      modules: [
+        {
+          title: "Module 1: Spring Framework Foundation",
+          duration: "3h",
+          order: 1,
+          lessons: [
+            {
+              title: "Inversion of Control & Dependency Injection",
+              duration: "30 min",
+              order: 1,
+              videoUrl: "https://www.youtube.com/embed/9SGDpanrc8U",
+              content: `# Inversion of Control (IoC)
+
+Spring IoC container manages application object lifecycles and injects dependencies via annotations like @Autowired and @Component.`,
+            },
+            {
+              title: "Building RESTful Controllers with Spring MVC",
+              duration: "35 min",
+              order: 2,
+              videoUrl: "https://www.youtube.com/embed/31KTdfRH6nY",
+              content: `# RESTful Endpoints with @RestController
+
+Map HTTP verbs (@GetMapping, @PostMapping) to Java handler methods and serialize payloads using Jackson.`,
+            },
+          ],
+        },
+        {
+          title: "Module 2: Persistence, Security & Production",
+          duration: "4h",
+          order: 2,
+          lessons: [
+            {
+              title: "Spring Data JPA, Entities & PostgreSQL",
+              duration: "40 min",
+              order: 3,
+              videoUrl: "https://www.youtube.com/embed/mSZANF2GwdY",
+              content: `# Spring Data JPA
+
+Define repository interfaces extending JpaRepository to get automated CRUD, pagination, and derived SQL queries without boilerplate.`,
+            },
+            {
+              title: "Spring Security 6 & JWT Token Authentication",
+              duration: "42 min",
+              order: 4,
+              videoUrl: "https://www.youtube.com/embed/BVdQ3iqwpQk",
+              content: `# Spring Security Architecture
+
+Configure SecurityFilterChain with stateless JWT authentication filters, disabling default session cookies.`,
+            },
+            {
+              title: "Packaging Microservices with Docker",
+              duration: "35 min",
+              order: 5,
+              videoUrl: "https://www.youtube.com/embed/7V-fs53r2ao",
+              content: `# Containerizing Spring Boot
+
+Build multi-stage Dockerfiles utilizing Eclipse Temurin JRE images for minimal production container footprints.`,
+            },
+          ],
+        },
+      ],
     },
     {
       id: "sql-dev",
@@ -343,7 +520,49 @@ Learn how state triggers re-renders and how to organize clean UI component trees
       gradient: "from-amber-500 to-orange-600",
       tags: JSON.stringify(["SQL", "Databases", "Queries"]),
       published: true,
-      modules: [],
+      modules: [
+        {
+          title: "Module 1: Relational Foundations & Queries",
+          duration: "2h 30m",
+          order: 1,
+          lessons: [
+            {
+              title: "Relational Schema Design & Normalization",
+              duration: "30 min",
+              order: 1,
+              videoUrl: "https://www.youtube.com/embed/HXV3zeQKqGY",
+              content: `# Relational Modeling & 3NF
+
+Normalize entity relationships into 1NF, 2NF, and 3NF to eliminate duplicate data and prevent insertion/update anomalies.`,
+            },
+            {
+              title: "Mastering Multi-Table Joins & Aggregates",
+              duration: "40 min",
+              order: 2,
+              videoUrl: "https://www.youtube.com/embed/7S_tz1z_5bA",
+              content: `# SQL Joins: INNER, LEFT, and FULL
+
+Understand join mechanics, GROUP BY aggregate pipelines, and window functions (ROW_NUMBER, RANK).`,
+            },
+          ],
+        },
+        {
+          title: "Module 2: Query Optimization & Indexing",
+          duration: "2h",
+          order: 2,
+          lessons: [
+            {
+              title: "B-Tree Indexes & Execution Plans",
+              duration: "35 min",
+              order: 3,
+              videoUrl: "https://www.youtube.com/embed/clhyw_z0YI0",
+              content: `# Database Indexing Under The Hood
+
+Analyze EXPLAIN ANALYZE execution trees and replace Seq Scans with Index Scans using composite B-Tree indexes.`,
+            },
+          ],
+        },
+      ],
     },
     {
       id: "system-design",
@@ -361,7 +580,58 @@ Learn how state triggers re-renders and how to organize clean UI component trees
       gradient: "from-slate-500 to-indigo-600",
       tags: JSON.stringify(["Scalability", "Architecture"]),
       published: true,
-      modules: [],
+      modules: [
+        {
+          title: "Module 1: Distributed Architecture Fundamentals",
+          duration: "3h",
+          order: 1,
+          lessons: [
+            {
+              title: "Scalability, Latency vs Throughput & CAP Theorem",
+              duration: "35 min",
+              order: 1,
+              videoUrl: "https://www.youtube.com/embed/m8Icp_Cid5o",
+              content: `# High Scale Fundamentals
+
+Design systems considering the CAP theorem trade-offs between Consistency, Availability, and Partition Tolerance.`,
+            },
+            {
+              title: "Load Balancers, Reverse Proxies & DNS Routing",
+              duration: "30 min",
+              order: 2,
+              videoUrl: "https://www.youtube.com/embed/K0Ta65OqQkY",
+              content: `# Traffic Management
+
+Distribute incoming traffic across server fleets using Layer 4 (TCP) and Layer 7 (HTTP) load balancing algorithms.`,
+            },
+          ],
+        },
+        {
+          title: "Module 2: Scalable Data & Case Studies",
+          duration: "3h 30m",
+          order: 2,
+          lessons: [
+            {
+              title: "Distributed Caching with Redis & Cache Invalidation",
+              duration: "38 min",
+              order: 3,
+              videoUrl: "https://www.youtube.com/embed/qYhRvH9tJKw",
+              content: `# Caching Architectures
+
+Implement Cache-Aside, Write-Through, and Write-Behind patterns while preventing Cache Stampedes and Thundering Herds.`,
+            },
+            {
+              title: "System Design Interview Case Study: TinyURL",
+              duration: "45 min",
+              order: 4,
+              videoUrl: "https://www.youtube.com/embed/fMZMm_0ZhK4",
+              content: `# Real World Case Study: URL Shortener
+
+Estimate read/write QPS, design Base62 encoding schemes, partition database ranges, and utilize distributed unique IDs.`,
+            },
+          ],
+        },
+      ],
     },
     {
       id: "python-master",
@@ -379,7 +649,67 @@ Learn how state triggers re-renders and how to organize clean UI component trees
       gradient: "from-blue-500 to-cyan-600",
       tags: JSON.stringify(["Python", "Automation"]),
       published: true,
-      modules: [],
+      modules: [
+        {
+          title: "Module 1: Modern Python Foundations",
+          duration: "3h",
+          order: 1,
+          lessons: [
+            {
+              title: "Python 3.12 Core Syntax & Data Structures",
+              duration: "35 min",
+              order: 1,
+              videoUrl: "https://www.youtube.com/embed/_uQrJ0TkZlc",
+              content: `# Python 3.12 Foundations
+
+Deep dive into lists, dictionaries, sets, tuples, and memory references with garbage collection.`,
+            },
+            {
+              title: "Object-Oriented Design & Magic Dunder Methods",
+              duration: "32 min",
+              order: 2,
+              videoUrl: "https://www.youtube.com/embed/JeznW_7DlB0",
+              content: `# Python OOP & Dunders
+
+Master __init__, __repr__, __str__, and custom operator overloading for expressive domain modeling.`,
+            },
+          ],
+        },
+        {
+          title: "Module 2: Advanced Python & Automation",
+          duration: "3h 45m",
+          order: 2,
+          lessons: [
+            {
+              title: "Generators, Iterators, and Custom Decorators",
+              duration: "36 min",
+              order: 3,
+              videoUrl: "https://www.youtube.com/embed/LHBE6Q9XlzI",
+              content: `# Advanced Python Constructs
+
+Write memory-efficient generator pipelines using 'yield' and compose function behavior with decorators.`,
+            },
+            {
+              title: "Asynchronous Programming with Asyncio & Coroutines",
+              duration: "40 min",
+              order: 4,
+              videoUrl: "https://www.youtube.com/embed/t5Bo1Je9EmE",
+              content: `# Asyncio Event Loop
+
+Run hundreds of concurrent network I/O operations without thread blocking using async/await syntax.`,
+            },
+            {
+              title: "Building Automation Scripts & Web Scrapers",
+              duration: "34 min",
+              order: 5,
+              videoUrl: "https://www.youtube.com/embed/XVv6mJpFOb0",
+              content: `# Automation & Web Scraping
+
+Automate repetitive workflows, parse web data with BeautifulSoup, and generate structured CSV/JSON outputs.`,
+            },
+          ],
+        },
+      ],
     },
     {
       id: "cyber-intro",
@@ -397,7 +727,49 @@ Learn how state triggers re-renders and how to organize clean UI component trees
       gradient: "from-red-500 to-rose-600",
       tags: JSON.stringify(["Security", "Networking"]),
       published: true,
-      modules: [],
+      modules: [
+        {
+          title: "Module 1: Threat Landscape & Cryptography",
+          duration: "2h 30m",
+          order: 1,
+          lessons: [
+            {
+              title: "Threat Vectors, Social Engineering & Phishing",
+              duration: "30 min",
+              order: 1,
+              videoUrl: "https://www.youtube.com/embed/inWWhr5tnEA",
+              content: `# Security Fundamentals
+
+Understand attacker mindsets, attack surfaces, malware categories, and social engineering mitigation.`,
+            },
+            {
+              title: "Symmetric vs Asymmetric Encryption & PKI",
+              duration: "36 min",
+              order: 2,
+              videoUrl: "https://www.youtube.com/embed/jhXCTbFnK8o",
+              content: `# Modern Cryptography
+
+How AES-256 and RSA-4096 work together in TLS handshakes to ensure end-to-end data secrecy and integrity.`,
+            },
+          ],
+        },
+        {
+          title: "Module 2: Network & Cloud Defense",
+          duration: "2h",
+          order: 2,
+          lessons: [
+            {
+              title: "Network Security, Firewalls & Zero Trust Architecture",
+              duration: "40 min",
+              order: 3,
+              videoUrl: "https://www.youtube.com/embed/2_lswM1S264",
+              content: `# Network Defense & Zero Trust
+
+Shift security postures from perimeter-based firewalls to continuous identity verification under Zero Trust principles.`,
+            },
+          ],
+        },
+      ],
     },
   ]
 
@@ -407,6 +779,11 @@ Learn how state triggers re-renders and how to organize clean UI component trees
       where: { id: c.id },
       update: { ...courseFields },
       create: { ...courseFields },
+    })
+
+    // Delete existing modules to ensure clean, non-duplicated reload
+    await prisma.module.deleteMany({
+      where: { courseId: course.id },
     })
 
     if (modules && modules.length > 0) {

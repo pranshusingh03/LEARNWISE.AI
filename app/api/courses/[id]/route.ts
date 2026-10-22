@@ -86,6 +86,15 @@ export async function GET(
       parsedTags = []
     }
 
+    const DEFAULT_VIDEOS: Record<string, string> = {
+      Programming: "https://www.youtube.com/embed/8hly31xKli0",
+      "Web Development": "https://www.youtube.com/embed/bMknfKXIFA8",
+      "Artificial Intelligence": "https://www.youtube.com/embed/i_LwzRVP7bg",
+      "Data Science": "https://www.youtube.com/embed/HXV3zeQKqGY",
+      Cybersecurity: "https://www.youtube.com/embed/inWWhr5tnEA",
+      "Cloud Computing": "https://www.youtube.com/embed/k1RI5locZE4",
+    }
+
     const formattedModules = course.modules.map((m) => ({
       id: m.id,
       title: m.title,
@@ -97,7 +106,10 @@ export async function GET(
         courseId: l.courseId,
         title: l.title,
         duration: l.duration,
-        videoUrl: l.videoUrl,
+        videoUrl:
+          l.videoUrl ||
+          DEFAULT_VIDEOS[course.category] ||
+          "https://www.youtube.com/embed/8hly31xKli0",
         content: l.content,
         order: l.order,
         completed: completedLessonIds.has(l.id),
