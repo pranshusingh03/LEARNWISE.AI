@@ -45,6 +45,17 @@ export async function POST(
       })
     }
 
+    // Optional explicit completion state from request body
+    let requestedCompleted: boolean | undefined = undefined
+    try {
+      const body = await request.json()
+      if (typeof body?.completed === "boolean") {
+        requestedCompleted = body.completed
+      }
+    } catch {
+      // No JSON body passed, default to toggling
+    }
+
     // Check if already completed
     const existingProgress = await prisma.lessonProgress.findUnique({
       where: {
@@ -58,22 +69,22 @@ export async function POST(
     let completedState = true
 
     if (existingProgress) {
-      // Toggle completion
-      completedState = !existingProgress.completed
+      // If explicit completed was passed, use it; otherwise toggle
+      completedState = requestedCompleted !== undefined ? requestedCompleted : !existingProgress.completed
       await prisma.lessonProgress.update({
         where: { id: existingProgress.id },
         data: { completed: completedState },
       })
     } else {
+      completedState = requestedCompleted !== undefined ? requestedCompleted : true
       await prisma.lessonProgress.create({
         data: {
           userId: user.id,
           lessonId,
           courseId,
-          completed: true,
+          completed: completedState,
         },
       })
-      completedState = true
     }
 
     // Recalculate course percentage

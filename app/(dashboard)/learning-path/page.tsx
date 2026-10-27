@@ -237,7 +237,7 @@ export default function LearningPathPage() {
                         </div>
                       )}
 
-                      <Link href={mod.courseId ? `/courses/${mod.courseId}` : "/courses"}>
+                      <Link href={mod.courseId ? `/courses/${mod.courseId}/learn` : "/courses"}>
                         <Button
                           size="sm"
                           variant={isCompleted ? "outline" : isLocked ? "ghost" : "default"}

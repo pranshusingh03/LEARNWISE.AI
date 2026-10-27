@@ -110,14 +110,27 @@ export interface QuizQuestion {
   explanation?: string
 }
 
+export interface QuizReviewItem {
+  questionId: string | number
+  topic: string
+  question: string
+  options: string[]
+  selectedOption: number | null
+  correctOption: number
+  isCorrect: boolean
+  explanation: string
+}
+
 export interface QuizAttemptResult {
   attemptId: string
   score: number
   totalQuestions: number
   percentage: number
   passed: boolean
+  passingScore?: number
   feedback: string
   topicScores: { topic: string; score: number }[]
+  review?: QuizReviewItem[]
 }
 
 export interface StudyTask {

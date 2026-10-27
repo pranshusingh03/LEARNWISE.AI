@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "test": "node --experimental-strip-types --test tests/full-stack-journey.test.ts",
+    "test": "node --experimental-strip-types --test tests/full-stack-journey.test.ts tests/learning-features.test.ts",
     "seed": "node --experimental-strip-types prisma/seed.ts",
     "db:push": "prisma db push"
   },
