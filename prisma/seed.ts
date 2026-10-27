@@ -991,6 +991,129 @@ Shift security postures from perimeter-based firewalls to continuous identity ve
     })
   }
 
+  // Additional Quiz 2: React & Frontend Architecture
+  const webQuiz = await prisma.quiz.upsert({
+    where: { id: "web-dev-assessment-1" },
+    update: {
+      title: "React & Modern Web Architecture",
+      topic: "Web Development",
+      passingScore: 70,
+    },
+    create: {
+      id: "web-dev-assessment-1",
+      title: "React & Modern Web Architecture",
+      topic: "Web Development",
+      description: "Evaluate your proficiency in React 19, state management, reconciliation, and modern frontend design.",
+      passingScore: 70,
+    },
+  })
+  await prisma.quizQuestion.deleteMany({ where: { quizId: webQuiz.id } })
+
+  const webQuestions = [
+    {
+      topic: "React Hooks",
+      question: "Which React hook is designed to memoize the computed result of an expensive calculation?",
+      options: JSON.stringify(["useEffect", "useMemo", "useCallback", "useRef"]),
+      answer: 1,
+      explanation: "useMemo caches the result of a computation between renders until its dependencies change.",
+    },
+    {
+      topic: "Virtual DOM",
+      question: "What is the primary role of the 'key' prop when rendering lists in React?",
+      options: JSON.stringify(["Styling list elements", "Helping React reconcile which items were added, changed, or removed", "Assigning HTML IDs", "Binding click handlers"]),
+      answer: 1,
+      explanation: "Keys give elements a stable identity so React's diffing algorithm can accurately reuse existing DOM nodes.",
+    },
+    {
+      topic: "Component Lifecycle",
+      question: "When does the cleanup function returned from a useEffect hook execute?",
+      options: JSON.stringify(["Only on initial mount", "Before the effect runs again and when the component unmounts", "Whenever props stay identical", "Never in production"]),
+      answer: 1,
+      explanation: "Cleanup functions execute before re-running the effect with new dependencies and when the component unmounts.",
+    },
+    {
+      topic: "State Management",
+      question: "What principle ensures state updates in React trigger predictable re-renders?",
+      options: JSON.stringify(["Direct state mutation", "State immutability", "Synchronous DOM manipulation", "Global window assignment"]),
+      answer: 1,
+      explanation: "State in React must be treated as immutable; replacing state objects allows shallow comparison to detect changes.",
+    },
+    {
+      topic: "Performance",
+      question: "What technique delays loading non-critical JavaScript code until needed?",
+      options: JSON.stringify(["Code Splitting & Lazy Loading", "Server Polling", "Inline CSS", "Recursive Rendering"]),
+      answer: 0,
+      explanation: "Code splitting with React.lazy and dynamic imports downloads JS bundles on-demand, speeding up initial page load.",
+    },
+  ]
+
+  for (const q of webQuestions) {
+    await prisma.quizQuestion.create({
+      data: {
+        quizId: webQuiz.id,
+        ...q,
+      },
+    })
+  }
+
+  // Additional Quiz 3: Java Collections & OOP
+  const oopQuiz = await prisma.quiz.upsert({
+    where: { id: "java-oop-assessment-1" },
+    update: {
+      title: "Java Collections & OOP Engineering",
+      topic: "Object-Oriented Programming",
+      passingScore: 70,
+    },
+    create: {
+      id: "java-oop-assessment-1",
+      title: "Java Collections & OOP Engineering",
+      topic: "Object-Oriented Programming",
+      description: "Master polymorphism, inheritance, generics, and Java collections framework internals.",
+      passingScore: 70,
+    },
+  })
+  await prisma.quizQuestion.deleteMany({ where: { quizId: oopQuiz.id } })
+
+  const oopQuestions = [
+    {
+      topic: "OOP Principles",
+      question: "Which OOP principle allows a subclass to provide a specific implementation of a method defined in its superclass?",
+      options: JSON.stringify(["Encapsulation", "Polymorphism (Method Overriding)", "Abstraction", "Composition"]),
+      answer: 1,
+      explanation: "Polymorphism enables runtime dynamic dispatch so subclasses can override superclass behavior.",
+    },
+    {
+      topic: "Collections",
+      question: "Which Java collection preserves the insertion order of elements while preventing duplicate entries?",
+      options: JSON.stringify(["HashSet", "LinkedHashSet", "TreeSet", "Vector"]),
+      answer: 1,
+      explanation: "LinkedHashSet maintains a doubly-linked list through all of its elements to ensure deterministic insertion order.",
+    },
+    {
+      topic: "Memory & References",
+      question: "Where are Java object instances allocated in the JVM memory layout?",
+      options: JSON.stringify(["Call Stack", "Heap Memory", "Program Counter Register", "Native Method Stack"]),
+      answer: 1,
+      explanation: "All object instances in Java reside on the Heap and are managed by the Garbage Collector.",
+    },
+    {
+      topic: "Concurrency",
+      question: "Which thread-safe Map implementation uses bucket-level locking for superior write concurrency?",
+      options: JSON.stringify(["Hashtable", "Collections.synchronizedMap", "ConcurrentHashMap", "TreeMap"]),
+      answer: 2,
+      explanation: "ConcurrentHashMap uses segmented lock-free reads and CAS bucket locks rather than synchronizing the entire table.",
+    },
+  ]
+
+  for (const q of oopQuestions) {
+    await prisma.quizQuestion.create({
+      data: {
+        quizId: oopQuiz.id,
+        ...q,
+      },
+    })
+  }
+
   // 7. Initial Quiz Attempt for Student
   await prisma.quizAttempt.create({
     data: {

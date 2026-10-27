@@ -92,6 +92,31 @@ export async function POST(request: NextRequest) {
       })
     }
 
+    // Build detailed review for the user
+    const review = quiz.questions.map((q) => {
+      let optionsList: string[] = []
+      try {
+        optionsList = JSON.parse(q.options)
+      } catch {
+        optionsList = []
+      }
+
+      const selected = answers[q.id]
+      const selectedOption = selected !== undefined ? Number(selected) : null
+      const isCorrect = selectedOption !== null && selectedOption === q.answer
+
+      return {
+        questionId: q.id,
+        topic: q.topic,
+        question: q.question,
+        options: optionsList,
+        selectedOption,
+        correctOption: q.answer,
+        isCorrect,
+        explanation: q.explanation || `The correct answer is "${optionsList[q.answer] || ""}".`,
+      }
+    })
+
     return NextResponse.json({
       success: true,
       result: {
@@ -103,6 +128,7 @@ export async function POST(request: NextRequest) {
         passingScore: quiz.passingScore,
         topicScores,
         feedback,
+        review,
       },
     })
   } catch (err: any) {
